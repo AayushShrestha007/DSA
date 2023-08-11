@@ -1,4 +1,4 @@
-package Question_Number7;
+package Q7;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -17,14 +17,14 @@ import java.util.*;
 import java.util.List;
 
 
-public class SocialNetworkGraphApp {
+public class ConnectionGraph {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Social Network Graph");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            SocialNetworkGraphPanel graphPanel = new SocialNetworkGraphPanel();
+            ConnectionGraphPanel graphPanel = new ConnectionGraphPanel();
             frame.add(graphPanel, BorderLayout.CENTER);
 
             JToolBar toolBar = new JToolBar();
@@ -62,7 +62,7 @@ public class SocialNetworkGraphApp {
     }
 }
 
-class SocialNetworkGraphPanel extends JPanel {
+class ConnectionGraphPanel extends JPanel {
     private static String directory= System.getProperty("user.dir");
     private List<Node> nodes = new ArrayList<>();
     private List<Edge> edges = new ArrayList<>();
@@ -74,7 +74,7 @@ class SocialNetworkGraphPanel extends JPanel {
     private Node draggingNode = null;
     private Point mouseOffset = new Point();
 
-    public SocialNetworkGraphPanel() {
+    public ConnectionGraphPanel() {
         readUserDataFromFile(directory+ "/userInformation.txt");
         readConnectionsFromFile(directory+ "/connections.txt");
         adjustNodePositions();
@@ -217,7 +217,7 @@ class SocialNetworkGraphPanel extends JPanel {
                     int followers = Integer.parseInt(parts[3]);
                     Node node = new Node(x, y, userName, followers);
 
-                    node.profileImagePath = System.getProperty("user.dir") +"/images/" + userName + ".jpg";
+                    node.profileImagePath = System.getProperty("user.dir") + "/profilePictures/" + userName + ".jpg";
                     nodes.add(node);
                     nodeMap.put(userName, node);
                 }
@@ -346,7 +346,7 @@ class SocialNetworkGraphPanel extends JPanel {
         return null;
     }
 
-    private final int GRID_SIZE = 20;
+    private final int GRID_SIZE = 10;
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
