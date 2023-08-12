@@ -14,11 +14,11 @@ public class Question3bBellmanford {
         for (int i = 0; i < vertices - 1; i++) {
          
             for(int j=0; j<graph.length;j++){
-                int u= graph[j][0];
-                int v= graph[j][1];
-                int w= graph[j][2];
-                if (distance[u] != Integer.MAX_VALUE && distance[u] + w < distance[v]) {
-                    distance[v] = distance[u] + w;
+                int s= graph[j][0]; //s is source
+                int d= graph[j][1]; //d is destination
+                int w= graph[j][2]; // w is weight
+                if (distance[s] != Integer.MAX_VALUE && distance[s] + w < distance[d]) {
+                    distance[d] = distance[s] + w;
                 }
             }
         }
@@ -26,10 +26,10 @@ public class Question3bBellmanford {
         // Detecting negative weight cycles
 
         for(int j=0; j<graph.length;j++){
-                int u= graph[j][0];
-                int v= graph[j][1];
+                int s= graph[j][0];
+                int d= graph[j][1];
                 int w= graph[j][2];
-                if (distance[u] != Integer.MAX_VALUE && distance[u] + w < distance[v]) {
+                if (distance[s] != Integer.MAX_VALUE && distance[s] + w < distance[d]) {
                     //throw exception if negative weight cycle is found
                     throw new Exception("Graph contains a negative weight cycle");
                 }
