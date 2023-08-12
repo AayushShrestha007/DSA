@@ -19,7 +19,7 @@ public class Question1B {
         }
 
         //Comparing the rating right to left
-        for(int i=len-2;i>0;i--){
+        for(int i=len-2;i>=0;i--){
             if((ratings[i]>ratings[i+1]) && coins[i]<=coins[i+1]){
                 coins[i]=coins[i+1]+1;
             }
@@ -36,7 +36,7 @@ public class Question1B {
     public static void main(String[] args) {
 
         Question1B q= new Question1B();
-        int[] ratings= {1,2,4,3,2,1};
+        int[] ratings= {1,0,2};
         int minCoins= q.minimumCoinCalc(ratings);
         System.out.println(minCoins);
 
