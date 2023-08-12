@@ -36,7 +36,7 @@ public class ConnectionGraph {
 
             toolBar.add(addNodeButton);
             toolBar.add(addEdgeButton);
-            frame.add(toolBar, BorderLayout.NORTH);
+            frame.add(toolBar, BorderLayout.EAST);
 
             JTextField searchField = new JTextField();
             searchField.setColumns(20);
@@ -53,7 +53,7 @@ public class ConnectionGraph {
             searchPanel.add(searchField);
             searchPanel.add(searchButton);
 
-            frame.add(searchPanel, BorderLayout.SOUTH);
+            frame.add(searchPanel, BorderLayout.NORTH);
 
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setVisible(true);
@@ -351,7 +351,6 @@ class ConnectionGraphPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        drawGrid(g);
 
         for (Edge edge : edges) {
             edge.draw(g);
@@ -387,13 +386,13 @@ class ConnectionGraphPanel extends JPanel {
 
          void draw(Graphics g) {
              if (isSelected) {
-                 g.setColor(Color.blue); // Change color for selected node
+                 g.setColor(Color.green); // Change color for selected node
              } else {
-                 g.setColor(Color.lightGray);
+                 g.setColor(Color.black);
              }
              g.fillOval(x - 30, y - 30, 60, 60);
              g.setColor(Color.black);
-             g.drawString(userName + " (" + followers + " followers)", x - 30, y + 50);
+             g.drawString(userName + " (" + followers + " Followers)", x - 30, y + 50);
              if (profileImage != null) {
                  int imageSize = 40;
                  g.drawImage(profileImage, x - imageSize / 2, y - imageSize / 2, imageSize, imageSize, null);
@@ -419,7 +418,7 @@ class ConnectionGraphPanel extends JPanel {
 
         void draw(Graphics g) {
             if (isSelected) {
-                g.setColor(Color.red);  // Change color for selected edge
+                g.setColor(Color.green);  // Change color for selected edge
             } else {
                 g.setColor(Color.black);
             }
@@ -428,17 +427,6 @@ class ConnectionGraphPanel extends JPanel {
             g.drawString(connectionStrength, (startNode.x + endNode.x) / 2 - 20, (startNode.y + endNode.y) / 2 + 20);
         }
     }
-
-    private void drawGrid(Graphics g) {
-        g.setColor(Color.lightGray);
-        for (int x = 0; x < getWidth(); x += GRID_SIZE) {
-            g.drawLine(x, 0, x, getHeight());
-        }
-        for (int y = 0; y < getHeight(); y += GRID_SIZE) {
-            g.drawLine(0, y, getWidth(), y);
-        }
-    }
-
 
     @Override
     public Dimension getPreferredSize() {

@@ -15,7 +15,7 @@ public class Question4B {
     private int xDepth = -1;
     private int yDepth = -1;
 
-    public boolean areBrothers(TreeNode root, int x, int y) {
+    public boolean areBrodthers(TreeNode root, int x, int y) {
         // Find nodes with values x and y, along with their depths and parents
         findNodes(root, null, x, y, 0);
 
