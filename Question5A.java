@@ -1,6 +1,7 @@
 import java.util.Random;
 public class Question5A {
  public static void main(String[] args) {
+    
  char[] best = generateRandomSolution(3);
  int bestScore = evaluate(best);
 

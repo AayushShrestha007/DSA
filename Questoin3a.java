@@ -9,7 +9,7 @@ public class Questoin3a {
         int[][] DP = new int[n + 2][n + 2];
 
         // Dynamic programming
-        for (int len = 1; len <= n; len++) {
+        for (int len = 1; len<=n; len++) {
             for (int start = 1; start <= n - len + 1; start++) {
                 int end = start + len - 1;
                 for (int k = start; k <= end; k++) {
