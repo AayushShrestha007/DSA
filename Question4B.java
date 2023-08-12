@@ -15,7 +15,7 @@ public class Question4B {
     private int xDepth = -1;
     private int yDepth = -1;
 
-    public boolean areBrodthers(TreeNode root, int x, int y) {
+    public boolean areBrothers(TreeNode root, int x, int y) {
         // Find nodes with values x and y, along with their depths and parents
         findNodes(root, null, x, y, 0);
 
@@ -56,7 +56,7 @@ public class Question4B {
         root.right = new TreeNode(3);
         root.left.left = new TreeNode(4);
 
-        // // uncomment the val below and change x and y value with 5 and 6 respectively to return a true answer
+        // // // uncomment the val below and change x and y value with 5 and 6 respectively to return a true answer
         // root.left.right = new TreeNode(5);
         // root.right.left = new TreeNode(6);
         // root.right.right = new TreeNode(7);
